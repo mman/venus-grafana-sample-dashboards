@@ -394,7 +394,7 @@
                 "kind": "ElementReference",
                 "name": "panel-1"
               },
-              "height": 15,
+              "height": 10,
               "width": 24,
               "x": 0,
               "y": 0
@@ -403,7 +403,20 @@
         ]
       }
     },
-    "links": [],
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Source (GitHub)",
+        "tooltip": "View source file in repository",
+        "type": "link",
+        "url": "https://github.com/mman/venus-grafana-sample-dashboards/blob/main/new-dashboard-2026-05-14-ieui3.json"
+      }
+    ],
     "liveNow": false,
     "preferences": {
       "layout": {
