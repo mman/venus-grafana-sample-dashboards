@@ -305,7 +305,7 @@
                       },
                       {
                         "id": "custom.fillOpacity",
-                        "value": 90
+                        "value": 50
                       }
                     ]
                   },
@@ -318,7 +318,7 @@
                       {
                         "id": "color",
                         "value": {
-                          "fixedColor": "dark-red",
+                          "fixedColor": "dark-green",
                           "mode": "fixed"
                         }
                       },
