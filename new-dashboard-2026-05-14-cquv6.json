@@ -102,6 +102,7 @@
           "id": 1,
           "links": [],
           "title": "Battery SoC Now",
+          "transparent": true,
           "vizConfig": {
             "group": "gauge",
             "kind": "VizConfig",
@@ -115,12 +116,20 @@
                     "mode": "absolute",
                     "steps": [
                       {
-                        "color": "green",
+                        "color": "dark-red",
                         "value": 0
                       },
                       {
-                        "color": "red",
-                        "value": 80
+                        "color": "dark-red",
+                        "value": 20
+                      },
+                      {
+                        "color": "dark-yellow",
+                        "value": 50
+                      },
+                      {
+                        "color": "dark-green",
+                        "value": 90
                       }
                     ]
                   },
@@ -147,14 +156,14 @@
                   "fields": "",
                   "values": false
                 },
-                "segmentCount": 1,
-                "segmentSpacing": 0.3,
+                "segmentCount": 100,
+                "segmentSpacing": 1,
                 "shape": "gauge",
-                "showThresholdLabels": false,
+                "showThresholdLabels": true,
                 "showThresholdMarkers": true,
                 "sizing": "auto",
                 "sparkline": false,
-                "textMode": "value"
+                "textMode": "auto"
               }
             },
             "version": "13.0.1+security-01"
@@ -233,6 +242,7 @@
           "id": 2,
           "links": [],
           "title": "Battery SoC Over Time",
+          "transparent": true,
           "vizConfig": {
             "group": "timeseries",
             "kind": "VizConfig",
@@ -356,7 +366,7 @@
                 "kind": "ElementReference",
                 "name": "panel-1"
               },
-              "height": 8,
+              "height": 10,
               "width": 8,
               "x": 0,
               "y": 0
@@ -369,7 +379,7 @@
                 "kind": "ElementReference",
                 "name": "panel-2"
               },
-              "height": 8,
+              "height": 10,
               "width": 16,
               "x": 8,
               "y": 0
@@ -378,7 +388,20 @@
         ]
       }
     },
-    "links": [],
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Source (GitHub)",
+        "tooltip": "View source file in repository",
+        "type": "link",
+        "url": "https://github.com/mman/venus-grafana-sample-dashboards/blob/main/new-dashboard-2026-05-14-cquv6.json"
+      }
+    ],
     "liveNow": false,
     "preferences": {
       "layout": {
@@ -391,7 +414,7 @@
     "preload": false,
     "tags": [],
     "timeSettings": {
-      "autoRefresh": "",
+      "autoRefresh": "1m",
       "autoRefreshIntervals": [
         "5s",
         "10s",
