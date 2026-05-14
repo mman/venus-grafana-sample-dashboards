@@ -2,7 +2,7 @@
   "apiVersion": "dashboard.grafana.app/v2",
   "kind": "Dashboard",
   "metadata": {
-    "name": "dafm18qg2uvklcc"
+    "name": "dffm1k8d2qkmbkc"
   },
   "spec": {
     "annotations": [
@@ -48,6 +48,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
+                        "alias": "PV Power Total",
                         "groupBy": [
                           {
                             "params": [
@@ -62,7 +63,7 @@
                             "type": "fill"
                           }
                         ],
-                        "measurement": "system/Dc/Battery/Voltage",
+                        "measurement": "switch/SwitchableOutput/output_1/Dimming",
                         "orderByTime": "ASC",
                         "policy": "default",
                         "resultFormat": "time_series",
@@ -85,12 +86,18 @@
                             "key": "name::tag",
                             "operator": "=~",
                             "value": "/^$installationName$/"
+                          },
+                          {
+                            "condition": "AND",
+                            "key": "instanceNumber::tag",
+                            "operator": "=",
+                            "value": "101"
                           }
                         ]
                       },
                       "version": "v0"
                     },
-                    "refId": "A"
+                    "refId": "PV Production Total"
                   }
                 },
                 {
@@ -104,6 +111,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
+                        "alias": "PV Power Excess",
                         "groupBy": [
                           {
                             "params": [
@@ -118,7 +126,7 @@
                             "type": "fill"
                           }
                         ],
-                        "measurement": "system/Dc/Battery/Current",
+                        "measurement": "switch/SwitchableOutput/output_1/Dimming",
                         "orderByTime": "ASC",
                         "policy": "default",
                         "resultFormat": "time_series",
@@ -141,12 +149,18 @@
                             "key": "name::tag",
                             "operator": "=~",
                             "value": "/^$installationName$/"
+                          },
+                          {
+                            "condition": "AND",
+                            "key": "instanceNumber::tag",
+                            "operator": "=",
+                            "value": "102"
                           }
                         ]
                       },
                       "version": "v0"
                     },
-                    "refId": "C"
+                    "refId": "PV Production Excess"
                   }
                 },
                 {
@@ -160,6 +174,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
+                        "alias": "EVCS Power",
                         "groupBy": [
                           {
                             "params": [
@@ -174,7 +189,7 @@
                             "type": "fill"
                           }
                         ],
-                        "measurement": "system/Dc/Battery/Temperature",
+                        "measurement": "evcharger/Ac/Power",
                         "orderByTime": "ASC",
                         "policy": "default",
                         "resultFormat": "time_series",
@@ -202,7 +217,7 @@
                       },
                       "version": "v0"
                     },
-                    "refId": "B"
+                    "refId": "EVCS Power"
                   }
                 }
               ],
@@ -213,7 +228,7 @@
           "description": "",
           "id": 1,
           "links": [],
-          "title": "Battery Voltage vs. Temperature",
+          "title": "EV Charger Power vs Excess PV Available",
           "transparent": true,
           "vizConfig": {
             "group": "timeseries",
@@ -230,6 +245,8 @@
                     "axisColorMode": "text",
                     "axisLabel": "",
                     "axisPlacement": "auto",
+                    "axisSoftMax": 15000,
+                    "axisSoftMin": 0,
                     "barAlignment": 0,
                     "barWidthFactor": 0.6,
                     "drawStyle": "line",
@@ -249,7 +266,7 @@
                     },
                     "showPoints": "auto",
                     "showValues": false,
-                    "spanNulls": true,
+                    "spanNulls": false,
                     "stacking": {
                       "group": "A",
                       "mode": "none"
@@ -258,6 +275,8 @@
                       "mode": "off"
                     }
                   },
+                  "max": 15000,
+                  "min": 0,
                   "thresholds": {
                     "mode": "absolute",
                     "steps": [
@@ -271,38 +290,71 @@
                       }
                     ]
                   },
-                  "unit": "volt"
+                  "unit": "watt"
                 },
                 "overrides": [
                   {
                     "matcher": {
                       "id": "byFrameRefID",
-                      "options": "B"
+                      "options": "EVCS Power"
                     },
                     "properties": [
                       {
-                        "id": "custom.axisPlacement",
-                        "value": "right"
+                        "id": "custom.lineWidth",
+                        "value": 1
                       },
                       {
-                        "id": "unit",
-                        "value": "celsius"
+                        "id": "custom.fillOpacity",
+                        "value": 50
                       }
                     ]
                   },
                   {
                     "matcher": {
-                      "id": "byFrameRefID",
-                      "options": "C"
+                      "id": "byName",
+                      "options": "EVCS Power"
                     },
                     "properties": [
                       {
-                        "id": "unit",
-                        "value": "amp"
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "dark-green",
+                          "mode": "fixed"
+                        }
                       },
                       {
                         "id": "custom.axisPlacement",
-                        "value": "left"
+                        "value": "right"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "PV Power Total"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "super-light-yellow",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "PV Power Excess"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "yellow",
+                          "mode": "fixed"
+                        }
                       }
                     ]
                   }
@@ -342,7 +394,7 @@
                 "kind": "ElementReference",
                 "name": "panel-1"
               },
-              "height": 11,
+              "height": 15,
               "width": 24,
               "x": 0,
               "y": 0
@@ -351,20 +403,7 @@
         ]
       }
     },
-    "links": [
-      {
-        "asDropdown": false,
-        "icon": "external link",
-        "includeVars": false,
-        "keepTime": false,
-        "tags": [],
-        "targetBlank": true,
-        "title": "Source (GitHub)",
-        "tooltip": "View source file in repository",
-        "type": "link",
-        "url": "https://github.com/mman/venus-grafana-sample-dashboards/blob/main/new-dashboard-2026-05-14-vpt5p.json"
-      }
-    ],
+    "links": [],
     "liveNow": false,
     "preferences": {
       "layout": {
@@ -391,12 +430,12 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-6h",
+      "from": "2026-05-13T07:09:18.646Z",
       "hideTimepicker": false,
       "timezone": "browser",
-      "to": "now"
+      "to": "2026-05-13T13:09:18.646Z"
     },
-    "title": "Example 3: Two Y Axes",
+    "title": "New dashboard",
     "variables": [
       {
         "kind": "QueryVariable",
@@ -429,7 +468,7 @@
           "regex": "",
           "regexApplyTo": "value",
           "skipUrlSync": false,
-          "sort": "alphabeticalAsc"
+          "sort": "disabled"
         }
       }
     ]
