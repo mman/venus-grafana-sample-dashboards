@@ -448,7 +448,7 @@
       "timezone": "browser",
       "to": "2026-05-13T13:09:18.646Z"
     },
-    "title": "New dashboard",
+    "title": "Example 4: EVCS Power Limiting",
     "variables": [
       {
         "kind": "QueryVariable",
