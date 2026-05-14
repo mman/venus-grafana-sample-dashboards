@@ -62,7 +62,7 @@
                             "type": "fill"
                           }
                         ],
-                        "measurement": "pvcharger",
+                        "measurement": "system/Dc/Battery/Voltage",
                         "orderByTime": "ASC",
                         "policy": "default",
                         "resultFormat": "time_series",
@@ -80,11 +80,129 @@
                             }
                           ]
                         ],
-                        "tags": []
+                        "tags": [
+                          {
+                            "key": "name::tag",
+                            "operator": "=~",
+                            "value": "/^$installationName$/"
+                          }
+                        ]
                       },
                       "version": "v0"
                     },
                     "refId": "A"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "datasource-influxdb"
+                      },
+                      "group": "influxdb",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "groupBy": [
+                          {
+                            "params": [
+                              "$__interval"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "null"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "system/Dc/Battery/Current",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "value"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "mean"
+                            }
+                          ]
+                        ],
+                        "tags": [
+                          {
+                            "key": "name::tag",
+                            "operator": "=~",
+                            "value": "/^$installationName$/"
+                          }
+                        ]
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "C"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "datasource-influxdb"
+                      },
+                      "group": "influxdb",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "groupBy": [
+                          {
+                            "params": [
+                              "$__interval"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "null"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "system/Dc/Battery/Temperature",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "value"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "mean"
+                            }
+                          ]
+                        ],
+                        "tags": [
+                          {
+                            "key": "name::tag",
+                            "operator": "=~",
+                            "value": "/^$installationName$/"
+                          }
+                        ]
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "B"
                   }
                 }
               ],
@@ -95,7 +213,7 @@
           "description": "",
           "id": 1,
           "links": [],
-          "title": "DC MPPT Voltage vs Power by Unit",
+          "title": "Battery Voltage vs. Temperature",
           "transparent": true,
           "vizConfig": {
             "group": "timeseries",
@@ -131,7 +249,7 @@
                     },
                     "showPoints": "auto",
                     "showValues": false,
-                    "spanNulls": false,
+                    "spanNulls": true,
                     "stacking": {
                       "group": "A",
                       "mode": "none"
@@ -152,9 +270,43 @@
                         "value": 80
                       }
                     ]
-                  }
+                  },
+                  "unit": "volt"
                 },
-                "overrides": []
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byFrameRefID",
+                      "options": "B"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.axisPlacement",
+                        "value": "right"
+                      },
+                      {
+                        "id": "unit",
+                        "value": "celsius"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byFrameRefID",
+                      "options": "C"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "amp"
+                      },
+                      {
+                        "id": "custom.axisPlacement",
+                        "value": "left"
+                      }
+                    ]
+                  }
+                ]
               },
               "options": {
                 "annotations": {
@@ -169,7 +321,7 @@
                 },
                 "tooltip": {
                   "hideZeros": false,
-                  "mode": "single",
+                  "mode": "multi",
                   "sort": "none"
                 }
               }
@@ -190,8 +342,8 @@
                 "kind": "ElementReference",
                 "name": "panel-1"
               },
-              "height": 8,
-              "width": 12,
+              "height": 10,
+              "width": 24,
               "x": 0,
               "y": 0
             }
@@ -199,7 +351,20 @@
         ]
       }
     },
-    "links": [],
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Source (GitHub)",
+        "tooltip": "View source file in repository",
+        "type": "link",
+        "url": "https://github.com/mman/venus-grafana-sample-dashboards/blob/main/new-dashboard-2026-05-14-vpt5p.json"
+      }
+    ],
     "liveNow": false,
     "preferences": {
       "layout": {
@@ -231,22 +396,22 @@
       "timezone": "browser",
       "to": "now"
     },
-    "title": "Example 2: Multiple Measurements in a Panel",
+    "title": "Example 3: Two Y Axes",
     "variables": [
       {
         "kind": "QueryVariable",
         "spec": {
           "allowCustomValue": false,
           "current": {
-            "text": "Furuno HTML5 Test",
-            "value": "Furuno HTML5 Test"
+            "text": "Man M. - Dolní Břežany",
+            "value": "Man M. - Dolní Břežany"
           },
           "definition": "show tag values with key =~ /name/",
           "hide": "dontHide",
           "includeAll": false,
           "label": "Installation",
           "multi": false,
-          "name": "query0",
+          "name": "installationName",
           "options": [],
           "query": {
             "datasource": {
