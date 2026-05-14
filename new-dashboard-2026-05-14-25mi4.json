@@ -71,6 +71,8 @@
                         "measurement": "solarcharger/Yield/Power",
                         "orderByTime": "ASC",
                         "policy": "default",
+                        "query": "SELECT mean(\"value\") FROM \"solarcharger/Yield/Power\" WHERE (\"name\"::tag =~ /^$query0$/) AND $timeFilter GROUP BY time($__interval), \"instanceNumber\"::tag fill(null)",
+                        "rawQuery": false,
                         "resultFormat": "time_series",
                         "select": [
                           [
@@ -110,23 +112,12 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
-                        "groupBy": [
-                          {
-                            "params": [
-                              "$__interval"
-                            ],
-                            "type": "time"
-                          },
-                          {
-                            "params": [
-                              "null"
-                            ],
-                            "type": "fill"
-                          }
-                        ],
+                        "groupBy": [],
                         "measurement": "solarcharger/Yield/Power",
                         "orderByTime": "ASC",
                         "policy": "default",
+                        "query": "SELECT sum(\"xxx\") FROM (SELECT mean(\"value\") AS \"xxx\" FROM \"solarcharger/Yield/Power\" WHERE (\"name\"::tag =~ /^$query0$/) AND $timeFilter GROUP BY time($__interval), \"instanceNumber\"::tag fill(null)) GROUP BY time($__interval) fill(null)",
+                        "rawQuery": true,
                         "resultFormat": "time_series",
                         "select": [
                           [
@@ -135,10 +126,6 @@
                                 "value"
                               ],
                               "type": "field"
-                            },
-                            {
-                              "params": [],
-                              "type": "sum"
                             }
                           ]
                         ],
@@ -163,7 +150,7 @@
           "description": "",
           "id": 1,
           "links": [],
-          "title": "MPPT Voltage vs Power by Unit",
+          "title": "DC MPPT Power by Unit",
           "transparent": true,
           "vizConfig": {
             "group": "timeseries",
@@ -224,7 +211,30 @@
                   },
                   "unit": "watt"
                 },
-                "overrides": []
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byFrameRefID",
+                      "options": "B"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.fillOpacity",
+                        "value": 0
+                      },
+                      {
+                        "id": "custom.lineStyle",
+                        "value": {
+                          "dash": [
+                            0,
+                            10
+                          ],
+                          "fill": "dot"
+                        }
+                      }
+                    ]
+                  }
+                ]
               },
               "options": {
                 "annotations": {
