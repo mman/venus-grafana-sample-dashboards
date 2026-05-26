@@ -225,11 +225,7 @@
                       {
                         "id": "custom.lineStyle",
                         "value": {
-                          "dash": [
-                            0,
-                            10
-                          ],
-                          "fill": "dot"
+                          "fill": "solid"
                         }
                       }
                     ]
@@ -331,8 +327,8 @@
         "spec": {
           "allowCustomValue": false,
           "current": {
-            "text": "Man M. - Dolní Břežany",
-            "value": "Man M. - Dolní Břežany"
+            "text": "DB",
+            "value": "DB"
           },
           "definition": "show tag values with key =~ /name/",
           "hide": "dontHide",
