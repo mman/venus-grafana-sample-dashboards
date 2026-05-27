@@ -396,15 +396,15 @@
       "timezone": "browser",
       "to": "now"
     },
-    "title": "Example 3: Two Y Axes",
+    "title": "Example 3: Two Y Axes w/ Background",
     "variables": [
       {
         "kind": "QueryVariable",
         "spec": {
           "allowCustomValue": false,
           "current": {
-            "text": "Man M. - Dolní Břežany",
-            "value": "Man M. - Dolní Břežany"
+            "text": "DB",
+            "value": "DB"
           },
           "definition": "show tag values with key =~ /name/",
           "hide": "dontHide",
