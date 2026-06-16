@@ -708,7 +708,7 @@
       "timezone": "browser",
       "to": "now"
     },
-    "title": "PV by MPPT",
+    "title": "Diagnostics",
     "variables": []
   }
 }
