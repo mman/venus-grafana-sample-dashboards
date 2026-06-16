@@ -283,7 +283,7 @@
                           },
                           {
                             "params": [
-                              "null"
+                              "previous"
                             ],
                             "type": "fill"
                           }
@@ -340,7 +340,7 @@
                           },
                           {
                             "params": [
-                              "null"
+                              "previous"
                             ],
                             "type": "fill"
                           }
@@ -397,7 +397,7 @@
                           },
                           {
                             "params": [
-                              "null"
+                              "previous"
                             ],
                             "type": "fill"
                           }
@@ -454,7 +454,7 @@
                           },
                           {
                             "params": [
-                              "null"
+                              "previous"
                             ],
                             "type": "fill"
                           }
@@ -704,7 +704,7 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-1h",
+      "from": "now-15m",
       "hideTimepicker": false,
       "timezone": "browser",
       "to": "now"
