@@ -273,7 +273,6 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
-                        "alias": "DC PV",
                         "groupBy": [
                           {
                             "params": [
@@ -283,12 +282,18 @@
                           },
                           {
                             "params": [
+                              "instanceNumber::tag"
+                            ],
+                            "type": "tag"
+                          },
+                          {
+                            "params": [
                               "previous"
                             ],
                             "type": "fill"
                           }
                         ],
-                        "measurement": "system/Dc/Pv/Power",
+                        "measurement": "solarcharger/Yield/Power",
                         "orderByTime": "ASC",
                         "policy": "default",
                         "resultFormat": "time_series",
@@ -618,6 +623,36 @@
                         }
                       }
                     ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "solarcharger/Yield/Power.mean { instanceNumber: 278 }"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "dark-green",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "solarcharger/Yield/Power.mean { instanceNumber: 279 }"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "semi-dark-green",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
                   }
                 ]
               },
@@ -704,10 +739,10 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-15m",
+      "from": "2026-06-16T11:17:50.009Z",
       "hideTimepicker": false,
       "timezone": "browser",
-      "to": "now"
+      "to": "2026-06-16T11:18:49.517Z"
     },
     "title": "Diagnostics",
     "variables": []
