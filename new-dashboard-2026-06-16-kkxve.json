@@ -759,6 +759,69 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
+                        "alias": "PV Excess",
+                        "groupBy": [
+                          {
+                            "params": [
+                              "$__interval"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "null"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "switch/GenericInput/0/Value",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "value"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "mean"
+                            }
+                          ]
+                        ],
+                        "tags": [
+                          {
+                            "key": "portalId::tag",
+                            "operator": "=",
+                            "value": "c0619ab2fcaa"
+                          },
+                          {
+                            "condition": "AND",
+                            "key": "instanceNumber::tag",
+                            "operator": "=",
+                            "value": "108"
+                          }
+                        ]
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "PV Excess"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "datasource-influxdb"
+                      },
+                      "group": "influxdb",
+                      "kind": "DataQuery",
+                      "spec": {
                         "alias": "House",
                         "groupBy": [
                           {
@@ -983,7 +1046,7 @@
                     "spanNulls": false,
                     "stacking": {
                       "group": "A",
-                      "mode": "none"
+                      "mode": "normal"
                     },
                     "thresholdsStyle": {
                       "mode": "off"
@@ -1017,6 +1080,13 @@
                           "fixedColor": "yellow",
                           "mode": "fixed"
                         }
+                      },
+                      {
+                        "id": "custom.stacking",
+                        "value": {
+                          "group": "A",
+                          "mode": "none"
+                        }
                       }
                     ]
                   },
@@ -1029,7 +1099,7 @@
                       {
                         "id": "color",
                         "value": {
-                          "fixedColor": "dark-orange",
+                          "fixedColor": "red",
                           "mode": "fixed"
                         }
                       }
@@ -1059,8 +1129,30 @@
                       {
                         "id": "color",
                         "value": {
-                          "fixedColor": "dark-green",
+                          "fixedColor": "super-light-red",
                           "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "PV Excess"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "orange",
+                          "mode": "fixed"
+                        }
+                      },
+                      {
+                        "id": "custom.stacking",
+                        "value": {
+                          "group": "A",
+                          "mode": "none"
                         }
                       }
                     ]
@@ -1080,7 +1172,7 @@
                 },
                 "tooltip": {
                   "hideZeros": false,
-                  "mode": "single",
+                  "mode": "multi",
                   "sort": "none"
                 }
               }
