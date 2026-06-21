@@ -706,7 +706,7 @@
                           },
                           {
                             "params": [
-                              "null"
+                              "previous"
                             ],
                             "type": "fill"
                           }
@@ -769,7 +769,7 @@
                           },
                           {
                             "params": [
-                              "null"
+                              "previous"
                             ],
                             "type": "fill"
                           }
@@ -832,7 +832,7 @@
                           },
                           {
                             "params": [
-                              "null"
+                              "previous"
                             ],
                             "type": "fill"
                           }
@@ -895,7 +895,7 @@
                           },
                           {
                             "params": [
-                              "null"
+                              "previous"
                             ],
                             "type": "fill"
                           }
@@ -958,7 +958,7 @@
                           },
                           {
                             "params": [
-                              "null"
+                              "previous"
                             ],
                             "type": "fill"
                           }
@@ -1268,10 +1268,10 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-6h",
+      "from": "2026-06-21T10:54:47.014Z",
       "hideTimepicker": false,
       "timezone": "browser",
-      "to": "now"
+      "to": "2026-06-21T10:58:40.347Z"
     },
     "title": "Diagnostics",
     "variables": []
