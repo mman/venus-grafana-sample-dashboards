@@ -1268,10 +1268,10 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "2026-06-21T10:54:47.014Z",
+      "from": "now-12h",
       "hideTimepicker": false,
       "timezone": "browser",
-      "to": "2026-06-21T10:58:40.347Z"
+      "to": "now"
     },
     "title": "Diagnostics",
     "variables": []
