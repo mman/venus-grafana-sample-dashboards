@@ -696,7 +696,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
-                        "alias": "PV Max",
+                        "alias": "PV Actual",
                         "groupBy": [
                           {
                             "params": [
@@ -739,13 +739,13 @@
                             "condition": "AND",
                             "key": "instanceNumber::tag",
                             "operator": "=",
-                            "value": "106"
+                            "value": "107"
                           }
                         ]
                       },
                       "version": "v0"
                     },
-                    "refId": "PV Max"
+                    "refId": "PV Actual"
                   }
                 },
                 {
@@ -1071,7 +1071,8 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "PV Max"
+                      "options": "PV Actual",
+                      "scope": "series"
                     },
                     "properties": [
                       {
@@ -1254,7 +1255,7 @@
     "preload": false,
     "tags": [],
     "timeSettings": {
-      "autoRefresh": "1m",
+      "autoRefresh": "5m",
       "autoRefreshIntervals": [
         "5s",
         "10s",
@@ -1268,7 +1269,7 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-12h",
+      "from": "now-1h",
       "hideTimepicker": false,
       "timezone": "browser",
       "to": "now"
