@@ -1438,6 +1438,25 @@
                     },
                     "refId": "E"
                   }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "__expr__"
+                      },
+                      "group": "__expr__",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "expression": "$A-$B",
+                        "type": "math"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "F"
+                  }
                 }
               ],
               "queryOptions": {},
@@ -1597,6 +1616,34 @@
                         "value": "right"
                       }
                     ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "F",
+                      "scope": "series"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "CellVoltageDifference"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "CellVoltageDifference"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "yellow",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
                   }
                 ]
               },
@@ -1722,10 +1769,10 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-12h",
+      "from": "2026-07-31T10:30:18.636Z",
       "hideTimepicker": false,
       "timezone": "browser",
-      "to": "now"
+      "to": "2026-07-31T11:18:59.890Z"
     },
     "title": "Diagnostics",
     "variables": []
