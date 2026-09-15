@@ -27,7 +27,6 @@
       }
     ],
     "cursorSync": "Off",
-    "description": "",
     "editable": true,
     "elements": {
       "panel-1": {
@@ -251,7 +250,7 @@
                 }
               }
             },
-            "version": "13.0.3"
+            "version": "13.2.1"
           }
         }
       },
@@ -674,7 +673,7 @@
                 }
               }
             },
-            "version": "13.0.3"
+            "version": "13.2.1"
           }
         }
       },
@@ -1178,7 +1177,7 @@
                 }
               }
             },
-            "version": "13.0.3"
+            "version": "13.2.1"
           }
         }
       },
@@ -1665,7 +1664,7 @@
                 }
               }
             },
-            "version": "13.0.3"
+            "version": "13.2.1"
           }
         }
       }
@@ -1729,20 +1728,7 @@
         ]
       }
     },
-    "links": [
-      {
-        "asDropdown": false,
-        "icon": "external link",
-        "includeVars": false,
-        "keepTime": false,
-        "tags": [],
-        "targetBlank": true,
-        "title": "Source (GitHub)",
-        "tooltip": "View source file in repository",
-        "type": "link",
-        "url": "https://github.com/mman/venus-grafana-sample-dashboards/blob/main/new-dashboard-2026-06-16-kkxve.json"
-      }
-    ],
+    "links": [],
     "liveNow": false,
     "preferences": {
       "layout": {
@@ -1769,10 +1755,10 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "2026-07-31T10:30:18.636Z",
+      "from": "now-12h",
       "hideTimepicker": false,
       "timezone": "browser",
-      "to": "2026-07-31T11:18:59.890Z"
+      "to": "now"
     },
     "title": "Diagnostics",
     "variables": []
