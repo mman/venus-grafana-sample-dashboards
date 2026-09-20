@@ -1535,6 +1535,14 @@
                       {
                         "id": "unit",
                         "value": "percent"
+                      },
+                      {
+                        "id": "custom.axisSoftMin",
+                        "value": 0
+                      },
+                      {
+                        "id": "custom.axisSoftMax",
+                        "value": 100
                       }
                     ]
                   },
@@ -1664,7 +1672,7 @@
                 }
               }
             },
-            "version": "13.2.1"
+            "version": "13.2.2"
           }
         }
       }
