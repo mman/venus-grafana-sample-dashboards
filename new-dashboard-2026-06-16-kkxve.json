@@ -1649,6 +1649,35 @@
                           "fixedColor": "yellow",
                           "mode": "fixed"
                         }
+                      },
+                      {
+                        "id": "custom.axisSoftMin",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  {
+                    "__systemRef": "hideSeriesFrom",
+                    "matcher": {
+                      "id": "byNames",
+                      "options": {
+                        "mode": "exclude",
+                        "names": [
+                          "CellVoltageDifference",
+                          "battery/Dc/0/Current.mean"
+                        ],
+                        "prefix": "All except:",
+                        "readOnly": true
+                      }
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.hideFrom",
+                        "value": {
+                          "legend": false,
+                          "tooltip": true,
+                          "viz": true
+                        }
                       }
                     ]
                   }
