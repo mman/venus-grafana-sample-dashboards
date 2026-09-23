@@ -250,7 +250,7 @@
                 }
               }
             },
-            "version": "13.2.1"
+            "version": "13.2.2"
           }
         }
       },
@@ -673,7 +673,7 @@
                 }
               }
             },
-            "version": "13.2.1"
+            "version": "13.2.2"
           }
         }
       },
@@ -1177,7 +1177,7 @@
                 }
               }
             },
-            "version": "13.2.1"
+            "version": "13.2.2"
           }
         }
       },
@@ -1482,7 +1482,7 @@
                             "type": "fill"
                           }
                         ],
-                        "measurement": "vebus/BatteryOperationalLimits/MaxChargeVoltage",
+                        "measurement": "settings/Settings/SystemSetup/MaxChargeVoltage",
                         "orderByTime": "ASC",
                         "policy": "default",
                         "resultFormat": "time_series",
@@ -1709,6 +1709,35 @@
                       {
                         "id": "custom.axisSoftMin",
                         "value": 0
+                      }
+                    ]
+                  },
+                  {
+                    "__systemRef": "hideSeriesFrom",
+                    "matcher": {
+                      "id": "byNames",
+                      "options": {
+                        "mode": "exclude",
+                        "names": [
+                          "battery/System/MaxCellVoltage.mean",
+                          "battery/System/MinCellVoltage.mean",
+                          "battery/Soc.mean",
+                          "battery/Dc/0/Current.mean",
+                          "battery/Dc/0/Voltage.mean",
+                          "CellVoltageDifference"
+                        ],
+                        "prefix": "All except:",
+                        "readOnly": true
+                      }
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.hideFrom",
+                        "value": {
+                          "legend": false,
+                          "tooltip": true,
+                          "viz": true
+                        }
                       }
                     ]
                   }
