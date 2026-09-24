@@ -1781,6 +1781,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
+                        "alias": "$tag_battery_id / $tag_cell_id",
                         "groupBy": [
                           {
                             "params": [
@@ -1790,7 +1791,13 @@
                           },
                           {
                             "params": [
-                              "cell::tag"
+                              "cell_id::tag"
+                            ],
+                            "type": "tag"
+                          },
+                          {
+                            "params": [
+                              "battery_id::tag"
                             ],
                             "type": "tag"
                           },
