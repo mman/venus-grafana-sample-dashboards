@@ -1719,10 +1719,10 @@
                       "options": {
                         "mode": "exclude",
                         "names": [
-                          "battery/System/MaxCellVoltage.mean",
-                          "battery/System/MinCellVoltage.mean",
                           "battery/Dc/0/Current.mean",
-                          "battery/Dc/0/Voltage.mean"
+                          "battery/Dc/0/Voltage.mean",
+                          "battery/System/MaxCellVoltage.mean",
+                          "battery/System/MinCellVoltage.mean"
                         ],
                         "prefix": "All except:",
                         "readOnly": true
@@ -1875,39 +1875,59 @@
                     "mode": "absolute",
                     "steps": [
                       {
-                        "color": "semi-dark-blue",
+                        "color": "dark-blue",
                         "value": 0
                       },
                       {
-                        "color": "semi-dark-orange",
+                        "color": "blue",
                         "value": 2.9
                       },
                       {
-                        "color": "super-light-green",
+                        "color": "light-blue",
                         "value": 3.05
                       },
                       {
-                        "color": "light-green",
+                        "color": "super-light-blue",
                         "value": 3.15
                       },
                       {
+                        "color": "super-light-green",
+                        "value": 3.2
+                      },
+                      {
+                        "color": "light-green",
+                        "value": 3.24
+                      },
+                      {
                         "color": "green",
-                        "value": 3.25
+                        "value": 3.27
                       },
                       {
                         "color": "semi-dark-green",
-                        "value": 3.35
+                        "value": 3.3
                       },
                       {
                         "color": "dark-green",
+                        "value": 3.33
+                      },
+                      {
+                        "color": "super-light-orange",
+                        "value": 3.36
+                      },
+                      {
+                        "color": "light-orange",
+                        "value": 3.4
+                      },
+                      {
+                        "color": "orange",
                         "value": 3.45
                       },
                       {
-                        "color": "semi-dark-orange",
+                        "color": "dark-orange",
                         "value": 3.55
                       },
                       {
-                        "color": "semi-dark-red",
+                        "color": "red",
                         "value": 3.65
                       }
                     ]
