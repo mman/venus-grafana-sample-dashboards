@@ -1842,51 +1842,26 @@
           "links": [],
           "title": "Pylontech Health",
           "vizConfig": {
-            "group": "timeseries",
+            "group": "state-timeline",
             "kind": "VizConfig",
             "spec": {
               "fieldConfig": {
                 "defaults": {
                   "color": {
                     "mode": "thresholds",
-                    "seriesBy": "max"
+                    "seriesBy": "last"
                   },
                   "custom": {
-                    "axisBorderShow": false,
-                    "axisCenteredZero": false,
-                    "axisColorMode": "text",
-                    "axisLabel": "",
                     "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "barWidthFactor": 0.9,
-                    "drawStyle": "line",
-                    "fillOpacity": 50,
-                    "gradientMode": "none",
+                    "fillOpacity": 70,
                     "hideFrom": {
                       "legend": false,
                       "tooltip": false,
                       "viz": false
                     },
                     "insertNulls": false,
-                    "lineInterpolation": "linear",
-                    "lineStyle": {
-                      "fill": "solid"
-                    },
-                    "lineWidth": 2,
-                    "pointSize": 1,
-                    "scaleDistribution": {
-                      "type": "linear"
-                    },
-                    "showPoints": "always",
-                    "showValues": false,
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "normal"
-                    },
-                    "thresholdsStyle": {
-                      "mode": "off"
-                    }
+                    "lineWidth": 0,
+                    "spanNulls": false
                   },
                   "decimals": 3,
                   "thresholds": {
@@ -1901,8 +1876,24 @@
                         "value": 2.9
                       },
                       {
-                        "color": "semi-dark-green",
+                        "color": "super-light-green",
                         "value": 3.05
+                      },
+                      {
+                        "color": "light-green",
+                        "value": 3.15
+                      },
+                      {
+                        "color": "green",
+                        "value": 3.25
+                      },
+                      {
+                        "color": "semi-dark-green",
+                        "value": 3.35
+                      },
+                      {
+                        "color": "dark-green",
+                        "value": 3.45
                       },
                       {
                         "color": "semi-dark-orange",
@@ -1919,12 +1910,15 @@
                 "overrides": []
               },
               "options": {
+                "alignValue": "left",
                 "legend": {
-                  "calcs": [],
                   "displayMode": "list",
                   "placement": "bottom",
                   "showLegend": true
                 },
+                "mergeValues": false,
+                "rowHeight": 0.9,
+                "showValue": "auto",
                 "tooltip": {
                   "hideZeros": false,
                   "mode": "multi",
