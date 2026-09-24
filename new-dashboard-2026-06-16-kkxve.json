@@ -2088,14 +2088,9 @@
                       {
                         "color": "green",
                         "value": 0
-                      },
-                      {
-                        "color": "red",
-                        "value": 1
                       }
                     ]
-                  },
-                  "unit": "volt"
+                  }
                 },
                 "overrides": []
               },
