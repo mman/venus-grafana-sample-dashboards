@@ -2229,6 +2229,10 @@
                       {
                         "id": "unit",
                         "value": "volt"
+                      },
+                      {
+                        "id": "decimals",
+                        "value": 3
                       }
                     ]
                   },
