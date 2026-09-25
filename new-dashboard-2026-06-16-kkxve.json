@@ -1848,7 +1848,7 @@
           "description": "",
           "id": 5,
           "links": [],
-          "title": "Pylontech Health",
+          "title": "Pylontech Cell Voltage",
           "vizConfig": {
             "group": "state-timeline",
             "kind": "VizConfig",
