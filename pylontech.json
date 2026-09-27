@@ -736,13 +736,6 @@
                               "type": "mean"
                             }
                           ]
-                        ],
-                        "tags": [
-                          {
-                            "key": "barcode::tag",
-                            "operator": "=",
-                            "value": "P222061C32221950"
-                          }
                         ]
                       },
                       "version": "v0"
