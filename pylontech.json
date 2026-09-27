@@ -149,6 +149,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
+                        "alias": "SoC",
                         "groupBy": [
                           {
                             "params": [
@@ -424,102 +425,12 @@
                       {
                         "color": "green",
                         "value": 0
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
                       }
                     ]
                   },
                   "unit": "volt"
                 },
                 "overrides": [
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "battery/Soc.mean",
-                      "scope": "series"
-                    },
-                    "properties": [
-                      {
-                        "id": "unit",
-                        "value": "percent"
-                      },
-                      {
-                        "id": "custom.axisSoftMin",
-                        "value": 0
-                      },
-                      {
-                        "id": "custom.axisSoftMax",
-                        "value": 100
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "battery/Dc/0/Current.mean",
-                      "scope": "series"
-                    },
-                    "properties": [
-                      {
-                        "id": "unit",
-                        "value": "amp"
-                      },
-                      {
-                        "id": "color",
-                        "value": {
-                          "fixedColor": "purple",
-                          "mode": "fixed"
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "battery/System/MinCellVoltage.mean"
-                    },
-                    "properties": [
-                      {
-                        "id": "color",
-                        "value": {
-                          "fixedColor": "green",
-                          "mode": "fixed"
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "battery/System/MaxCellVoltage.mean"
-                    },
-                    "properties": [
-                      {
-                        "id": "color",
-                        "value": {
-                          "fixedColor": "red",
-                          "mode": "fixed"
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "battery/Dc/0/Voltage.mean"
-                    },
-                    "properties": [
-                      {
-                        "id": "color",
-                        "value": {
-                          "fixedColor": "orange",
-                          "mode": "fixed"
-                        }
-                      }
-                    ]
-                  },
                   {
                     "matcher": {
                       "id": "byName",
@@ -575,6 +486,10 @@
                           "fixedColor": "orange",
                           "mode": "fixed"
                         }
+                      },
+                      {
+                        "id": "custom.axisPlacement",
+                        "value": "right"
                       }
                     ]
                   },
@@ -613,27 +528,15 @@
                     ]
                   },
                   {
-                    "__systemRef": "hideSeriesFrom",
                     "matcher": {
-                      "id": "byNames",
-                      "options": {
-                        "mode": "exclude",
-                        "names": [
-                          "CellVoltageDifference",
-                          "MaxCellVoltage"
-                        ],
-                        "prefix": "All except:",
-                        "readOnly": true
-                      }
+                      "id": "byName",
+                      "options": "SoC",
+                      "scope": "series"
                     },
                     "properties": [
                       {
-                        "id": "custom.hideFrom",
-                        "value": {
-                          "legend": false,
-                          "tooltip": true,
-                          "viz": true
-                        }
+                        "id": "custom.axisPlacement",
+                        "value": "left"
                       }
                     ]
                   }
