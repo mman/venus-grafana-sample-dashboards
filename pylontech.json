@@ -1326,8 +1326,8 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
-                        "alias": "$tag_battery_id  $tag_barcode",
-                        "query": "SELECT mean(\"cell_temperature_spread\")\nFROM \"pylontech/battery\"\nWHERE $timeFilter\nGROUP BY time($__interval), \"battery_id\", \"barcode\" fill(previous)",
+                        "alias": "$tag_battery_id",
+                        "query": "SELECT mean(\"cell_temperature_spread\")\nFROM \"pylontech/battery\"\nWHERE $timeFilter\nGROUP BY time($__interval), \"battery_id\" fill(previous)",
                         "rawQuery": true,
                         "resultFormat": "time_series"
                       },
