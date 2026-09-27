@@ -47,6 +47,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
+                        "alias": "MaxCellVoltage",
                         "groupBy": [
                           {
                             "params": [
@@ -83,7 +84,7 @@
                       },
                       "version": "v0"
                     },
-                    "refId": "A"
+                    "refId": "MaxCellVoltage"
                   }
                 },
                 {
@@ -97,6 +98,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
+                        "alias": "MinCellVoltage",
                         "groupBy": [
                           {
                             "params": [
@@ -133,7 +135,7 @@
                       },
                       "version": "v0"
                     },
-                    "refId": "B"
+                    "refId": "MinCellVoltage"
                   }
                 },
                 {
@@ -183,7 +185,7 @@
                       },
                       "version": "v0"
                     },
-                    "refId": "C"
+                    "refId": "SoC"
                   }
                 },
                 {
@@ -197,6 +199,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
+                        "alias": "Dc/Current",
                         "groupBy": [
                           {
                             "params": [
@@ -247,6 +250,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
+                        "alias": "Dc/Voltage",
                         "groupBy": [
                           {
                             "params": [
@@ -297,7 +301,7 @@
                       "group": "__expr__",
                       "kind": "DataQuery",
                       "spec": {
-                        "expression": "$A-$B",
+                        "expression": "$MaxCellVoltage-$MinCellVoltage",
                         "type": "math"
                       },
                       "version": "v0"
@@ -316,6 +320,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
+                        "alias": "MaxChargeVoltage",
                         "groupBy": [
                           {
                             "params": [
@@ -561,25 +566,46 @@
                     ]
                   },
                   {
-                    "__systemRef": "hideSeriesFrom",
                     "matcher": {
-                      "id": "byNames",
-                      "options": {
-                        "mode": "exclude",
-                        "names": [
-                          "CellVoltageDifference"
-                        ],
-                        "prefix": "All except:",
-                        "readOnly": true
-                      }
+                      "id": "byName",
+                      "options": "MinCellVoltage"
                     },
                     "properties": [
                       {
-                        "id": "custom.hideFrom",
+                        "id": "color",
                         "value": {
-                          "legend": false,
-                          "tooltip": true,
-                          "viz": true
+                          "fixedColor": "red",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "MaxCellVoltage"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "green",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Dc/Voltage"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "orange",
+                          "mode": "fixed"
                         }
                       }
                     ]
