@@ -632,7 +632,7 @@
                       "options": {
                         "mode": "exclude",
                         "names": [
-                          "Dc/Current"
+                          "Dc/Voltage"
                         ],
                         "prefix": "All except:",
                         "readOnly": true
