@@ -1061,7 +1061,7 @@
           "description": "",
           "id": 4,
           "links": [],
-          "title": "Pylotech Cell Imbalance by Battery",
+          "title": "Pylotech Cell Voltage Spread by Battery",
           "vizConfig": {
             "group": "state-timeline",
             "kind": "VizConfig",
