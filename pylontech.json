@@ -910,7 +910,8 @@
                               "type": "last"
                             }
                           ]
-                        ]
+                        ],
+                        "tags": []
                       },
                       "version": "v0"
                     },
@@ -1163,7 +1164,7 @@
                   "spec": {
                     "options": {
                       "excludeByName": {
-                        "BAL": true,
+                        "BAL": false,
                         "Base State": true,
                         "Curr. State": true,
                         "Temp. State": true,
