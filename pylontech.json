@@ -839,7 +839,7 @@
                 "showValue": "auto",
                 "tooltip": {
                   "hideZeros": false,
-                  "mode": "multi",
+                  "mode": "single",
                   "sort": "none"
                 }
               }
