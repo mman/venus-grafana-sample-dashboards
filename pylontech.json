@@ -1017,7 +1017,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
-                        "alias": "$tag_battery_id  $tag_barcode",
+                        "alias": "$tag_battery_id",
                         "query": "SELECT mean(\"cell_voltage_spread\") * 1000\nFROM \"pylontech/battery\"\nWHERE $timeFilter\nGROUP BY time($__interval), \"battery_id\", \"barcode\" fill(previous)",
                         "rawQuery": true,
                         "resultFormat": "time_series"
