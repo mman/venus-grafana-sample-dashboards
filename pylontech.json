@@ -632,7 +632,8 @@
                       "options": {
                         "mode": "exclude",
                         "names": [
-                          "Dc/Voltage"
+                          "CellVoltageDifference",
+                          "Dc/Current"
                         ],
                         "prefix": "All except:",
                         "readOnly": true
