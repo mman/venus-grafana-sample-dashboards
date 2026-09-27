@@ -1221,23 +1221,33 @@
                   "custom": {
                     "align": "auto",
                     "cellOptions": {
-                      "type": "auto"
+                      "applyToRow": true,
+                      "mode": "basic",
+                      "type": "color-background"
                     },
                     "footer": {
                       "reducers": []
                     },
                     "inspect": false
                   },
+                  "mappings": [
+                    {
+                      "options": {
+                        "pattern": "^B\\d[13579]$",
+                        "result": {
+                          "color": "#00000080",
+                          "index": 0
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ],
                   "thresholds": {
                     "mode": "absolute",
                     "steps": [
                       {
-                        "color": "green",
+                        "color": "transparent",
                         "value": 0
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
                       }
                     ]
                   }
