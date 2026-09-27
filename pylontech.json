@@ -1353,7 +1353,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "alias": "$tag_battery_id  $tag_barcode",
-                        "query": "SELECT mean(\"temperature_delta\") * 1000\nFROM \"pylontech/battery\"\nWHERE $timeFilter\nGROUP BY time($__interval), \"battery_id\", \"barcode\" fill(previous)",
+                        "query": "SELECT mean(\"cell_temperature_spread\")\nFROM \"pylontech/battery\"\nWHERE $timeFilter\nGROUP BY time($__interval), \"battery_id\", \"barcode\" fill(previous)",
                         "rawQuery": true,
                         "resultFormat": "time_series"
                       },
@@ -1401,43 +1401,27 @@
                       },
                       {
                         "color": "light-green",
-                        "value": 5
+                        "value": 1
                       },
                       {
                         "color": "green",
-                        "value": 10
-                      },
-                      {
-                        "color": "semi-dark-green",
-                        "value": 20
+                        "value": 2
                       },
                       {
                         "color": "super-light-orange",
-                        "value": 30
-                      },
-                      {
-                        "color": "light-orange",
-                        "value": 50
+                        "value": 3
                       },
                       {
                         "color": "orange",
-                        "value": 75
-                      },
-                      {
-                        "color": "semi-dark-orange",
-                        "value": 100
+                        "value": 5
                       },
                       {
                         "color": "red",
-                        "value": 150
-                      },
-                      {
-                        "color": "semi-dark-red",
-                        "value": 200
+                        "value": 8
                       }
                     ]
                   },
-                  "unit": "mvolt"
+                  "unit": "celsius"
                 },
                 "overrides": []
               },
