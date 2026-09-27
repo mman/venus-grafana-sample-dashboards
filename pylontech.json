@@ -923,13 +923,6 @@
                               "type": "last"
                             }
                           ]
-                        ],
-                        "tags": [
-                          {
-                            "key": "barcode::tag",
-                            "operator": "=",
-                            "value": "P222061C32221950"
-                          }
                         ]
                       },
                       "version": "v0"
@@ -1491,7 +1484,7 @@
                 "kind": "ElementReference",
                 "name": "panel-2"
               },
-              "height": 11,
+              "height": 29,
               "width": 24,
               "x": 0,
               "y": 29
@@ -1507,7 +1500,7 @@
               "height": 11,
               "width": 24,
               "x": 0,
-              "y": 40
+              "y": 58
             }
           },
           {
@@ -1520,7 +1513,7 @@
               "height": 17,
               "width": 24,
               "x": 0,
-              "y": 51
+              "y": 69
             }
           }
         ]
