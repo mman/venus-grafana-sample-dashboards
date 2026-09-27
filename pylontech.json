@@ -996,7 +996,7 @@
           "description": "",
           "id": 4,
           "links": [],
-          "title": "Pylotech Cell Imbalance",
+          "title": "Pylotech Cell Imbalance by Battery",
           "vizConfig": {
             "group": "state-timeline",
             "kind": "VizConfig",
