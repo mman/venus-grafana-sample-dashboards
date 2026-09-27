@@ -959,6 +959,133 @@
             "version": "13.2.2"
           }
         }
+      },
+      "panel-4": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "datasource-influxdb"
+                      },
+                      "group": "influxdb",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "$tag_battery_id  $tag_barcode",
+                        "query": "SELECT mean(\"cell_spread\") * 1000\nFROM \"pylontech/battery\"\nWHERE $timeFilter\nGROUP BY time($__interval), \"battery_id\", \"barcode\" fill(previous)",
+                        "rawQuery": true,
+                        "resultFormat": "time_series"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 4,
+          "links": [],
+          "title": "Pylotech Cell Imbalance",
+          "vizConfig": {
+            "group": "state-timeline",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "continuous-GrYlRd"
+                  },
+                  "custom": {
+                    "axisPlacement": "auto",
+                    "fillOpacity": 70,
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineWidth": 0,
+                    "spanNulls": false
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "super-light-green",
+                        "value": 0
+                      },
+                      {
+                        "color": "light-green",
+                        "value": 5
+                      },
+                      {
+                        "color": "green",
+                        "value": 10
+                      },
+                      {
+                        "color": "semi-dark-green",
+                        "value": 20
+                      },
+                      {
+                        "color": "super-light-orange",
+                        "value": 30
+                      },
+                      {
+                        "color": "light-orange",
+                        "value": 50
+                      },
+                      {
+                        "color": "orange",
+                        "value": 75
+                      },
+                      {
+                        "color": "semi-dark-orange",
+                        "value": 100
+                      },
+                      {
+                        "color": "red",
+                        "value": 150
+                      },
+                      {
+                        "color": "semi-dark-red",
+                        "value": 200
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "alignValue": "left",
+                "legend": {
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "mergeValues": true,
+                "rowHeight": 0.9,
+                "showValue": "auto",
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "13.2.2"
+          }
+        }
       }
     },
     "layout": {
@@ -970,12 +1097,25 @@
             "spec": {
               "element": {
                 "kind": "ElementReference",
+                "name": "panel-4"
+              },
+              "height": 8,
+              "width": 24,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
                 "name": "panel-1"
               },
               "height": 13,
               "width": 24,
               "x": 0,
-              "y": 0
+              "y": 8
             }
           },
           {
@@ -988,7 +1128,7 @@
               "height": 11,
               "width": 24,
               "x": 0,
-              "y": 13
+              "y": 21
             }
           },
           {
@@ -1001,7 +1141,7 @@
               "height": 11,
               "width": 24,
               "x": 0,
-              "y": 24
+              "y": 32
             }
           }
         ]
