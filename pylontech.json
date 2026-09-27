@@ -523,19 +523,6 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "battery/Dc/0/Voltage.mean",
-                      "scope": "series"
-                    },
-                    "properties": [
-                      {
-                        "id": "custom.axisPlacement",
-                        "value": "right"
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
                       "options": "F",
                       "scope": "series"
                     },
@@ -549,32 +536,13 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "CellVoltageDifference"
-                    },
-                    "properties": [
-                      {
-                        "id": "color",
-                        "value": {
-                          "fixedColor": "yellow",
-                          "mode": "fixed"
-                        }
-                      },
-                      {
-                        "id": "custom.axisSoftMin",
-                        "value": 0
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
                       "options": "MinCellVoltage"
                     },
                     "properties": [
                       {
                         "id": "color",
                         "value": {
-                          "fixedColor": "red",
+                          "fixedColor": "green",
                           "mode": "fixed"
                         }
                       }
@@ -589,7 +557,7 @@
                       {
                         "id": "color",
                         "value": {
-                          "fixedColor": "green",
+                          "fixedColor": "red",
                           "mode": "fixed"
                         }
                       }
@@ -622,6 +590,25 @@
                           "fixedColor": "purple",
                           "mode": "fixed"
                         }
+                      },
+                      {
+                        "id": "unit",
+                        "value": "amp"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "CellVoltageDifference"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "yellow",
+                          "mode": "fixed"
+                        }
                       }
                     ]
                   },
@@ -633,7 +620,7 @@
                         "mode": "exclude",
                         "names": [
                           "CellVoltageDifference",
-                          "Dc/Current"
+                          "MaxCellVoltage"
                         ],
                         "prefix": "All except:",
                         "readOnly": true
