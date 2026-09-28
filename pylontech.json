@@ -29,7 +29,7 @@
     "cursorSync": "Off",
     "editable": true,
     "elements": {
-      "panel-1": {
+      "panel-14": {
         "kind": "Panel",
         "spec": {
           "data": {
@@ -47,7 +47,7 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
-                        "alias": "MaxCellVoltage",
+                        "alias": "$tag_battery_id / $tag_cell_id",
                         "groupBy": [
                           {
                             "params": [
@@ -57,12 +57,24 @@
                           },
                           {
                             "params": [
+                              "cell_id::tag"
+                            ],
+                            "type": "tag"
+                          },
+                          {
+                            "params": [
+                              "battery_id::tag"
+                            ],
+                            "type": "tag"
+                          },
+                          {
+                            "params": [
                               "previous"
                             ],
                             "type": "fill"
                           }
                         ],
-                        "measurement": "battery/System/MaxCellVoltage",
+                        "measurement": "pylontech/cell",
                         "orderByTime": "ASC",
                         "policy": "default",
                         "resultFormat": "time_series",
@@ -70,13 +82,13 @@
                           [
                             {
                               "params": [
-                                "value"
+                                "balancing"
                               ],
                               "type": "field"
                             },
                             {
                               "params": [],
-                              "type": "mean"
+                              "type": "last"
                             }
                           ]
                         ],
@@ -84,287 +96,7 @@
                       },
                       "version": "v0"
                     },
-                    "refId": "MaxCellVoltage"
-                  }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "datasource-influxdb"
-                      },
-                      "group": "influxdb",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "alias": "MinCellVoltage",
-                        "groupBy": [
-                          {
-                            "params": [
-                              "$__interval"
-                            ],
-                            "type": "time"
-                          },
-                          {
-                            "params": [
-                              "previous"
-                            ],
-                            "type": "fill"
-                          }
-                        ],
-                        "measurement": "battery/System/MinCellVoltage",
-                        "orderByTime": "ASC",
-                        "policy": "default",
-                        "resultFormat": "time_series",
-                        "select": [
-                          [
-                            {
-                              "params": [
-                                "value"
-                              ],
-                              "type": "field"
-                            },
-                            {
-                              "params": [],
-                              "type": "mean"
-                            }
-                          ]
-                        ],
-                        "tags": []
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "MinCellVoltage"
-                  }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "datasource-influxdb"
-                      },
-                      "group": "influxdb",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "alias": "SoC",
-                        "groupBy": [
-                          {
-                            "params": [
-                              "$__interval"
-                            ],
-                            "type": "time"
-                          },
-                          {
-                            "params": [
-                              "previous"
-                            ],
-                            "type": "fill"
-                          }
-                        ],
-                        "measurement": "battery/Soc",
-                        "orderByTime": "ASC",
-                        "policy": "default",
-                        "resultFormat": "time_series",
-                        "select": [
-                          [
-                            {
-                              "params": [
-                                "value"
-                              ],
-                              "type": "field"
-                            },
-                            {
-                              "params": [],
-                              "type": "mean"
-                            }
-                          ]
-                        ],
-                        "tags": []
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "SoC"
-                  }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "datasource-influxdb"
-                      },
-                      "group": "influxdb",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "alias": "Dc/Current",
-                        "groupBy": [
-                          {
-                            "params": [
-                              "$__interval"
-                            ],
-                            "type": "time"
-                          },
-                          {
-                            "params": [
-                              "previous"
-                            ],
-                            "type": "fill"
-                          }
-                        ],
-                        "measurement": "battery/Dc/0/Current",
-                        "orderByTime": "ASC",
-                        "policy": "default",
-                        "resultFormat": "time_series",
-                        "select": [
-                          [
-                            {
-                              "params": [
-                                "value"
-                              ],
-                              "type": "field"
-                            },
-                            {
-                              "params": [],
-                              "type": "mean"
-                            }
-                          ]
-                        ],
-                        "tags": []
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "D"
-                  }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "datasource-influxdb"
-                      },
-                      "group": "influxdb",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "alias": "Dc/Voltage",
-                        "groupBy": [
-                          {
-                            "params": [
-                              "$__interval"
-                            ],
-                            "type": "time"
-                          },
-                          {
-                            "params": [
-                              "previous"
-                            ],
-                            "type": "fill"
-                          }
-                        ],
-                        "measurement": "battery/Dc/0/Voltage",
-                        "orderByTime": "ASC",
-                        "policy": "default",
-                        "resultFormat": "time_series",
-                        "select": [
-                          [
-                            {
-                              "params": [
-                                "value"
-                              ],
-                              "type": "field"
-                            },
-                            {
-                              "params": [],
-                              "type": "mean"
-                            }
-                          ]
-                        ],
-                        "tags": []
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "E"
-                  }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "__expr__"
-                      },
-                      "group": "__expr__",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "expression": "$MaxCellVoltage-$MinCellVoltage",
-                        "type": "math"
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "F"
-                  }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "datasource-influxdb"
-                      },
-                      "group": "influxdb",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "alias": "MaxChargeVoltage",
-                        "groupBy": [
-                          {
-                            "params": [
-                              "$__interval"
-                            ],
-                            "type": "time"
-                          },
-                          {
-                            "params": [
-                              "previous"
-                            ],
-                            "type": "fill"
-                          }
-                        ],
-                        "measurement": "settings/Settings/SystemSetup/MaxChargeVoltage",
-                        "orderByTime": "ASC",
-                        "policy": "default",
-                        "resultFormat": "time_series",
-                        "select": [
-                          [
-                            {
-                              "params": [
-                                "value"
-                              ],
-                              "type": "field"
-                            },
-                            {
-                              "params": [],
-                              "type": "mean"
-                            }
-                          ]
-                        ],
-                        "tags": [
-                          {
-                            "key": "portalId::tag",
-                            "operator": "=",
-                            "value": "c0619ab2fcaa"
-                          }
-                        ]
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "G"
+                    "refId": "A"
                   }
                 }
               ],
@@ -373,52 +105,49 @@
             }
           },
           "description": "",
-          "id": 1,
+          "id": 14,
           "links": [],
-          "title": "Pylontech Battery",
+          "title": "Pylontech Cell Balancing",
           "vizConfig": {
-            "group": "timeseries",
+            "group": "state-timeline",
             "kind": "VizConfig",
             "spec": {
               "fieldConfig": {
                 "defaults": {
                   "color": {
-                    "mode": "palette-classic"
+                    "mode": "thresholds",
+                    "seriesBy": "last"
                   },
                   "custom": {
-                    "axisBorderShow": false,
-                    "axisCenteredZero": false,
-                    "axisColorMode": "text",
-                    "axisLabel": "",
                     "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "barWidthFactor": 0.6,
-                    "drawStyle": "line",
-                    "fillOpacity": 0,
-                    "gradientMode": "none",
+                    "fillOpacity": 70,
                     "hideFrom": {
                       "legend": false,
                       "tooltip": false,
                       "viz": false
                     },
                     "insertNulls": false,
-                    "lineInterpolation": "linear",
-                    "lineWidth": 1,
-                    "pointSize": 5,
-                    "scaleDistribution": {
-                      "type": "linear"
-                    },
-                    "showPoints": "auto",
-                    "showValues": false,
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "none"
-                    },
-                    "thresholdsStyle": {
-                      "mode": "off"
-                    }
+                    "lineWidth": 0,
+                    "spanNulls": false
                   },
+                  "decimals": 3,
+                  "mappings": [
+                    {
+                      "options": {
+                        "false": {
+                          "color": "green",
+                          "index": 0,
+                          "text": "idle"
+                        },
+                        "true": {
+                          "color": "red",
+                          "index": 1,
+                          "text": "balancing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ],
                   "thresholds": {
                     "mode": "absolute",
                     "steps": [
@@ -427,85 +156,168 @@
                         "value": 0
                       }
                     ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "alignValue": "left",
+                "legend": {
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "mergeValues": false,
+                "rowHeight": 0.9,
+                "showValue": "auto",
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "13.2.2"
+          }
+        }
+      },
+      "panel-15": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "datasource-influxdb"
+                      },
+                      "group": "influxdb",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "query": "SELECT\n  last(\"voltage\")     AS \"Volt\",\n  last(\"current\")     AS \"Curr\",\n  last(\"temperature\") AS \"Tempr\",\n  last(\"base_state\")  AS \"Base State\",\n  last(\"volt_state\")  AS \"Volt. State\",\n  last(\"curr_state\")  AS \"Curr. State\",\n  last(\"temp_state\")  AS \"Temp. State\",\n  last(\"soc\")         AS \"SOC\",\n  last(\"coulomb\")     AS \"Coulomb\",\n  last(\"balancing\")   AS \"BAL\"\nFROM \"pylontech/cell\"\nWHERE time \u003e now() - 10m\nGROUP BY \"cell_id\", \"battery_id\"",
+                        "rawQuery": true,
+                        "resultFormat": "table"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "group": "organize",
+                  "kind": "Transformation",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {
+                        "BAL": false,
+                        "Base State": true,
+                        "Curr. State": true,
+                        "Temp. State": true,
+                        "Time": true,
+                        "Volt. State": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {},
+                      "renameByName": {}
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 15,
+          "links": [],
+          "title": "Pylontech `bat`",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
                   },
-                  "unit": "volt"
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "applyToRow": true,
+                      "mode": "basic",
+                      "type": "color-background"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  },
+                  "mappings": [
+                    {
+                      "options": {
+                        "pattern": "^B\\d[13579]$",
+                        "result": {
+                          "color": "#00000080",
+                          "index": 0
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "transparent",
+                        "value": 0
+                      }
+                    ]
+                  }
                 },
                 "overrides": [
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "F",
+                      "options": "SOC",
                       "scope": "series"
                     },
                     "properties": [
                       {
-                        "id": "displayName",
-                        "value": "CellVoltageDifference"
+                        "id": "unit",
+                        "value": "percent"
                       }
                     ]
                   },
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "MinCellVoltage"
+                      "options": "Volt",
+                      "scope": "series"
                     },
                     "properties": [
                       {
-                        "id": "color",
-                        "value": {
-                          "fixedColor": "green",
-                          "mode": "fixed"
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "MaxCellVoltage"
-                    },
-                    "properties": [
-                      {
-                        "id": "color",
-                        "value": {
-                          "fixedColor": "red",
-                          "mode": "fixed"
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Dc/Voltage"
-                    },
-                    "properties": [
-                      {
-                        "id": "color",
-                        "value": {
-                          "fixedColor": "orange",
-                          "mode": "fixed"
-                        }
+                        "id": "unit",
+                        "value": "volt"
                       },
                       {
-                        "id": "custom.axisPlacement",
-                        "value": "right"
+                        "id": "decimals",
+                        "value": 3
                       }
                     ]
                   },
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "Dc/Current"
+                      "options": "Curr",
+                      "scope": "series"
                     },
                     "properties": [
-                      {
-                        "id": "color",
-                        "value": {
-                          "fixedColor": "purple",
-                          "mode": "fixed"
-                        }
-                      },
                       {
                         "id": "unit",
                         "value": "amp"
@@ -515,86 +327,79 @@
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "CellVoltageDifference"
+                      "options": "Tempr",
+                      "scope": "series"
                     },
                     "properties": [
                       {
-                        "id": "color",
-                        "value": {
-                          "fixedColor": "yellow",
-                          "mode": "fixed"
-                        }
+                        "id": "unit",
+                        "value": "celsius"
                       }
                     ]
                   },
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "SoC",
+                      "options": "Coulomb",
                       "scope": "series"
                     },
                     "properties": [
                       {
-                        "id": "custom.axisPlacement",
-                        "value": "left"
-                      },
-                      {
                         "id": "unit",
-                        "value": "percent"
-                      },
-                      {
-                        "id": "custom.axisSoftMin",
-                        "value": 0
-                      },
-                      {
-                        "id": "custom.axisSoftMax",
-                        "value": 100
-                      }
-                    ]
-                  },
-                  {
-                    "__systemRef": "hideSeriesFrom",
-                    "matcher": {
-                      "id": "byNames",
-                      "options": {
-                        "mode": "exclude",
-                        "names": [
-                          "CellVoltageDifference"
-                        ],
-                        "prefix": "All except:",
-                        "readOnly": true
-                      }
-                    },
-                    "properties": [
-                      {
-                        "id": "custom.hideFrom",
-                        "value": {
-                          "legend": false,
-                          "tooltip": true,
-                          "viz": true
-                        }
+                        "value": "amph"
                       }
                     ]
                   }
                 ]
               },
               "options": {
-                "annotations": {
-                  "clustering": -1,
-                  "multiLane": false
-                },
-                "legend": {
-                  "calcs": [],
-                  "displayMode": "list",
-                  "placement": "bottom",
-                  "showLegend": true
-                },
-                "tooltip": {
-                  "hideZeros": false,
-                  "mode": "multi",
-                  "sort": "none"
-                }
+                "cellHeight": "sm",
+                "frameIndex": 113,
+                "showHeader": true
               }
+            },
+            "version": "13.2.2"
+          }
+        }
+      },
+      "panel-16": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "",
+                      "kind": "DataQuery",
+                      "spec": {},
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 16,
+          "links": [],
+          "title": "New panel",
+          "vizConfig": {
+            "group": "__unconfigured-panel",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {}
             },
             "version": "13.2.2"
           }
@@ -791,158 +596,6 @@
           }
         }
       },
-      "panel-3": {
-        "kind": "Panel",
-        "spec": {
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "datasource-influxdb"
-                      },
-                      "group": "influxdb",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "alias": "$tag_battery_id / $tag_cell_id",
-                        "groupBy": [
-                          {
-                            "params": [
-                              "$__interval"
-                            ],
-                            "type": "time"
-                          },
-                          {
-                            "params": [
-                              "cell_id::tag"
-                            ],
-                            "type": "tag"
-                          },
-                          {
-                            "params": [
-                              "battery_id::tag"
-                            ],
-                            "type": "tag"
-                          },
-                          {
-                            "params": [
-                              "previous"
-                            ],
-                            "type": "fill"
-                          }
-                        ],
-                        "measurement": "pylontech/cell",
-                        "orderByTime": "ASC",
-                        "policy": "default",
-                        "resultFormat": "time_series",
-                        "select": [
-                          [
-                            {
-                              "params": [
-                                "balancing"
-                              ],
-                              "type": "field"
-                            },
-                            {
-                              "params": [],
-                              "type": "last"
-                            }
-                          ]
-                        ],
-                        "tags": []
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                }
-              ],
-              "queryOptions": {},
-              "transformations": []
-            }
-          },
-          "description": "",
-          "id": 3,
-          "links": [],
-          "title": "Pylontech Cell Balancing",
-          "vizConfig": {
-            "group": "state-timeline",
-            "kind": "VizConfig",
-            "spec": {
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds",
-                    "seriesBy": "last"
-                  },
-                  "custom": {
-                    "axisPlacement": "auto",
-                    "fillOpacity": 70,
-                    "hideFrom": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": false
-                    },
-                    "insertNulls": false,
-                    "lineWidth": 0,
-                    "spanNulls": false
-                  },
-                  "decimals": 3,
-                  "mappings": [
-                    {
-                      "options": {
-                        "false": {
-                          "color": "green",
-                          "index": 0,
-                          "text": "idle"
-                        },
-                        "true": {
-                          "color": "red",
-                          "index": 1,
-                          "text": "balancing"
-                        }
-                      },
-                      "type": "value"
-                    }
-                  ],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": 0
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "options": {
-                "alignValue": "left",
-                "legend": {
-                  "displayMode": "list",
-                  "placement": "bottom",
-                  "showLegend": true
-                },
-                "mergeValues": false,
-                "rowHeight": 0.9,
-                "showValue": "auto",
-                "tooltip": {
-                  "hideZeros": false,
-                  "mode": "single",
-                  "sort": "none"
-                }
-              }
-            },
-            "version": "13.2.2"
-          }
-        }
-      },
       "panel-4": {
         "kind": "Panel",
         "spec": {
@@ -1065,187 +718,6 @@
                   "mode": "multi",
                   "sort": "none"
                 }
-              }
-            },
-            "version": "13.2.2"
-          }
-        }
-      },
-      "panel-5": {
-        "kind": "Panel",
-        "spec": {
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "datasource-influxdb"
-                      },
-                      "group": "influxdb",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "query": "SELECT\n  last(\"voltage\")     AS \"Volt\",\n  last(\"current\")     AS \"Curr\",\n  last(\"temperature\") AS \"Tempr\",\n  last(\"base_state\")  AS \"Base State\",\n  last(\"volt_state\")  AS \"Volt. State\",\n  last(\"curr_state\")  AS \"Curr. State\",\n  last(\"temp_state\")  AS \"Temp. State\",\n  last(\"soc\")         AS \"SOC\",\n  last(\"coulomb\")     AS \"Coulomb\",\n  last(\"balancing\")   AS \"BAL\"\nFROM \"pylontech/cell\"\nWHERE time \u003e now() - 10m\nGROUP BY \"cell_id\", \"battery_id\"",
-                        "rawQuery": true,
-                        "resultFormat": "table"
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                }
-              ],
-              "queryOptions": {},
-              "transformations": [
-                {
-                  "group": "organize",
-                  "kind": "Transformation",
-                  "spec": {
-                    "options": {
-                      "excludeByName": {
-                        "BAL": false,
-                        "Base State": true,
-                        "Curr. State": true,
-                        "Temp. State": true,
-                        "Time": true,
-                        "Volt. State": true
-                      },
-                      "includeByName": {},
-                      "indexByName": {},
-                      "renameByName": {}
-                    }
-                  }
-                }
-              ]
-            }
-          },
-          "description": "",
-          "id": 5,
-          "links": [],
-          "title": "Pylontech `bat`",
-          "vizConfig": {
-            "group": "table",
-            "kind": "VizConfig",
-            "spec": {
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "custom": {
-                    "align": "auto",
-                    "cellOptions": {
-                      "applyToRow": true,
-                      "mode": "basic",
-                      "type": "color-background"
-                    },
-                    "footer": {
-                      "reducers": []
-                    },
-                    "inspect": false
-                  },
-                  "mappings": [
-                    {
-                      "options": {
-                        "pattern": "^B\\d[13579]$",
-                        "result": {
-                          "color": "#00000080",
-                          "index": 0
-                        }
-                      },
-                      "type": "regex"
-                    }
-                  ],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "transparent",
-                        "value": 0
-                      }
-                    ]
-                  }
-                },
-                "overrides": [
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "SOC",
-                      "scope": "series"
-                    },
-                    "properties": [
-                      {
-                        "id": "unit",
-                        "value": "percent"
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Volt",
-                      "scope": "series"
-                    },
-                    "properties": [
-                      {
-                        "id": "unit",
-                        "value": "volt"
-                      },
-                      {
-                        "id": "decimals",
-                        "value": 3
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Curr",
-                      "scope": "series"
-                    },
-                    "properties": [
-                      {
-                        "id": "unit",
-                        "value": "amp"
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Tempr",
-                      "scope": "series"
-                    },
-                    "properties": [
-                      {
-                        "id": "unit",
-                        "value": "celsius"
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Coulomb",
-                      "scope": "series"
-                    },
-                    "properties": [
-                      {
-                        "id": "unit",
-                        "value": "amph"
-                      }
-                    ]
-                  }
-                ]
-              },
-              "options": {
-                "cellHeight": "sm",
-                "frameIndex": 113,
-                "showHeader": true
               }
             },
             "version": "13.2.2"
@@ -1579,101 +1051,293 @@
             "version": "13.2.2"
           }
         }
+      },
+      "panel-8": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "datasource-influxdb"
+                      },
+                      "group": "influxdb",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "query": "SELECT\n  \"voltage\" AS \"Volt\", \"current\" AS \"Curr\", \"temperature\" AS \"Tempr\",\n  \"temp_low\" AS \"Tlow\", \"temp_low_index\" AS \"Tlow.Id\",\n  \"temp_high\" AS \"Thigh\", \"temp_high_index\" AS \"Thigh.Id\",\n  \"volt_low\" AS \"Vlow\", \"volt_low_index\" AS \"Vlow.Id\",\n  \"volt_high\" AS \"Vhigh\", \"volt_high_index\" AS \"Vhigh.Id\",\n  \"base_state\" AS \"Base.St\", \"volt_state\" AS \"Volt.St\",\n  \"curr_state\" AS \"Curr.St\", \"temp_state\" AS \"Temp.St\",\n  \"soc\" AS \"Coulomb\",\n  \"bv_state\" AS \"B.V.St\", \"bt_state\" AS \"B.T.St\",\n  \"mos_temperature\" AS \"MosTempr\", \"mt_state\" AS \"M.T.St\"\nFROM \"pylontech/battery\"\nWHERE $timeFilter\nGROUP BY \"battery\", \"battery_id\"\nORDER BY time DESC LIMIT 1",
+                        "rawQuery": true,
+                        "resultFormat": "table"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "group": "organize",
+                  "kind": "Transformation",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {
+                        "Time": true,
+                        "battery": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {},
+                      "renameByName": {}
+                    }
+                  }
+                },
+                {
+                  "group": "sortBy",
+                  "kind": "Transformation",
+                  "spec": {
+                    "options": {
+                      "fields": {},
+                      "sort": [
+                        {
+                          "field": "battery_id"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 8,
+          "links": [],
+          "title": "Pylontech `pwr`",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false,
+                    "minWidth": 50
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byRegexp",
+                      "options": "^V\\w+$",
+                      "scope": "series"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "volt"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byRegexp",
+                      "options": "^(Mos)?T(?!ime)\\w+$",
+                      "scope": "series"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "celsius"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Coulomb",
+                      "scope": "series"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "percent"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true
+              }
+            },
+            "version": "13.2.2"
+          }
+        }
       }
     },
     "layout": {
-      "kind": "GridLayout",
+      "kind": "RowsLayout",
       "spec": {
-        "items": [
+        "rows": [
           {
-            "kind": "GridLayoutItem",
+            "kind": "RowsLayoutRow",
             "spec": {
-              "element": {
-                "kind": "ElementReference",
-                "name": "panel-7"
+              "collapse": false,
+              "layout": {
+                "kind": "GridLayout",
+                "spec": {
+                  "items": [
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-7"
+                        },
+                        "height": 8,
+                        "width": 24,
+                        "x": 0,
+                        "y": 0
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-4"
+                        },
+                        "height": 8,
+                        "width": 24,
+                        "x": 0,
+                        "y": 8
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-6"
+                        },
+                        "height": 8,
+                        "width": 24,
+                        "x": 0,
+                        "y": 16
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-2"
+                        },
+                        "height": 29,
+                        "width": 24,
+                        "x": 0,
+                        "y": 24
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-8"
+                        },
+                        "height": 8,
+                        "width": 24,
+                        "x": 0,
+                        "y": 53
+                      }
+                    }
+                  ]
+                }
               },
-              "height": 8,
-              "width": 24,
-              "x": 0,
-              "y": 0
+              "title": "Overview"
             }
           },
           {
-            "kind": "GridLayoutItem",
+            "kind": "RowsLayoutRow",
             "spec": {
-              "element": {
-                "kind": "ElementReference",
-                "name": "panel-4"
+              "collapse": true,
+              "layout": {
+                "kind": "GridLayout",
+                "spec": {
+                  "items": [
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-14"
+                        },
+                        "height": 28,
+                        "width": 24,
+                        "x": 0,
+                        "y": 0
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-15"
+                        },
+                        "height": 28,
+                        "width": 24,
+                        "x": 0,
+                        "y": 28
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-16"
+                        },
+                        "height": 8,
+                        "width": 12,
+                        "x": 0,
+                        "y": 56
+                      }
+                    }
+                  ]
+                }
               },
-              "height": 8,
-              "width": 24,
-              "x": 0,
-              "y": 8
-            }
-          },
-          {
-            "kind": "GridLayoutItem",
-            "spec": {
-              "element": {
-                "kind": "ElementReference",
-                "name": "panel-6"
-              },
-              "height": 8,
-              "width": 24,
-              "x": 0,
-              "y": 16
-            }
-          },
-          {
-            "kind": "GridLayoutItem",
-            "spec": {
-              "element": {
-                "kind": "ElementReference",
-                "name": "panel-1"
-              },
-              "height": 13,
-              "width": 24,
-              "x": 0,
-              "y": 24
-            }
-          },
-          {
-            "kind": "GridLayoutItem",
-            "spec": {
-              "element": {
-                "kind": "ElementReference",
-                "name": "panel-2"
-              },
-              "height": 29,
-              "width": 24,
-              "x": 0,
-              "y": 37
-            }
-          },
-          {
-            "kind": "GridLayoutItem",
-            "spec": {
-              "element": {
-                "kind": "ElementReference",
-                "name": "panel-3"
-              },
-              "height": 28,
-              "width": 24,
-              "x": 0,
-              "y": 66
-            }
-          },
-          {
-            "kind": "GridLayoutItem",
-            "spec": {
-              "element": {
-                "kind": "ElementReference",
-                "name": "panel-5"
-              },
-              "height": 28,
-              "width": 24,
-              "x": 0,
-              "y": 94
+              "title": "Detailed"
             }
           }
         ]
