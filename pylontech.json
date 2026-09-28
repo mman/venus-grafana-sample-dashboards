@@ -743,7 +743,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "alias": "$tag_battery_id",
-                        "query": "SELECT mean(\"cell_temperature_spread\")\nFROM \"pylontech/battery\"\nWHERE $timeFilter\nGROUP BY time($__interval), \"battery_id\" fill(previous)",
+                        "query": "SELECT mean(\"temperature_delta\")\nFROM \"pylontech/battery\"\nWHERE $timeFilter\nGROUP BY time($__interval), \"battery_id\" fill(previous)",
                         "rawQuery": true,
                         "resultFormat": "time_series"
                       },
@@ -786,28 +786,36 @@
                     "mode": "absolute",
                     "steps": [
                       {
-                        "color": "super-light-green",
+                        "color": "semi-dark-blue",
                         "value": 0
                       },
                       {
-                        "color": "light-green",
-                        "value": 1
+                        "color": "blue",
+                        "value": -3
+                      },
+                      {
+                        "color": "light-blue",
+                        "value": -2
                       },
                       {
                         "color": "green",
-                        "value": 2
+                        "value": -1
                       },
                       {
-                        "color": "super-light-orange",
-                        "value": 3
+                        "color": "light-green",
+                        "value": 0
+                      },
+                      {
+                        "color": "yellow",
+                        "value": 1
                       },
                       {
                         "color": "orange",
-                        "value": 5
+                        "value": 2
                       },
                       {
                         "color": "red",
-                        "value": 8
+                        "value": 3
                       }
                     ]
                   },
