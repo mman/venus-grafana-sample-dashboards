@@ -760,7 +760,7 @@
           "description": "",
           "id": 6,
           "links": [],
-          "title": "Pylotech Cell Temperature Spread by Battery",
+          "title": "Pylotech Cell Temperature Delta of Battery to Stack",
           "vizConfig": {
             "group": "state-timeline",
             "kind": "VizConfig",
