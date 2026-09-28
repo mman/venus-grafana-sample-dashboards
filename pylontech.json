@@ -555,7 +555,7 @@
                       "options": {
                         "mode": "exclude",
                         "names": [
-                          "SoC"
+                          "CellVoltageDifference"
                         ],
                         "prefix": "All except:",
                         "readOnly": true
@@ -749,7 +749,11 @@
                         "value": 3.45
                       },
                       {
-                        "color": "dark-orange",
+                        "color": "semi-dark-orange",
+                        "value": 3.5
+                      },
+                      {
+                        "color": "light-red",
                         "value": 3.55
                       },
                       {
