@@ -545,30 +545,10 @@
                       {
                         "id": "custom.axisSoftMin",
                         "value": 0
-                      }
-                    ]
-                  },
-                  {
-                    "__systemRef": "hideSeriesFrom",
-                    "matcher": {
-                      "id": "byNames",
-                      "options": {
-                        "mode": "exclude",
-                        "names": [
-                          "CellVoltageDifference"
-                        ],
-                        "prefix": "All except:",
-                        "readOnly": true
-                      }
-                    },
-                    "properties": [
+                      },
                       {
-                        "id": "custom.hideFrom",
-                        "value": {
-                          "legend": false,
-                          "tooltip": true,
-                          "viz": true
-                        }
+                        "id": "custom.axisSoftMax",
+                        "value": 100
                       }
                     ]
                   }
