@@ -1590,12 +1590,25 @@
             "spec": {
               "element": {
                 "kind": "ElementReference",
+                "name": "panel-7"
+              },
+              "height": 6,
+              "width": 24,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
                 "name": "panel-4"
               },
               "height": 8,
               "width": 24,
               "x": 0,
-              "y": 0
+              "y": 6
             }
           },
           {
@@ -1608,7 +1621,7 @@
               "height": 8,
               "width": 24,
               "x": 0,
-              "y": 8
+              "y": 14
             }
           },
           {
@@ -1621,7 +1634,7 @@
               "height": 13,
               "width": 24,
               "x": 0,
-              "y": 16
+              "y": 22
             }
           },
           {
@@ -1634,7 +1647,7 @@
               "height": 29,
               "width": 24,
               "x": 0,
-              "y": 29
+              "y": 35
             }
           },
           {
@@ -1647,7 +1660,7 @@
               "height": 28,
               "width": 24,
               "x": 0,
-              "y": 58
+              "y": 64
             }
           },
           {
@@ -1660,20 +1673,7 @@
               "height": 28,
               "width": 24,
               "x": 0,
-              "y": 86
-            }
-          },
-          {
-            "kind": "GridLayoutItem",
-            "spec": {
-              "element": {
-                "kind": "ElementReference",
-                "name": "panel-7"
-              },
-              "height": 8,
-              "width": 12,
-              "x": 0,
-              "y": 114
+              "y": 92
             }
           }
         ]
