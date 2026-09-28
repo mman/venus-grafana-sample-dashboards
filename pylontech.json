@@ -551,6 +551,30 @@
                         "value": 100
                       }
                     ]
+                  },
+                  {
+                    "__systemRef": "hideSeriesFrom",
+                    "matcher": {
+                      "id": "byNames",
+                      "options": {
+                        "mode": "exclude",
+                        "names": [
+                          "CellVoltageDifference"
+                        ],
+                        "prefix": "All except:",
+                        "readOnly": true
+                      }
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.hideFrom",
+                        "value": {
+                          "legend": false,
+                          "tooltip": true,
+                          "viz": true
+                        }
+                      }
+                    ]
                   }
                 ]
               },
@@ -1339,6 +1363,222 @@
             "version": "13.2.2"
           }
         }
+      },
+      "panel-7": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "datasource-influxdb"
+                      },
+                      "group": "influxdb",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "alias": "$tag_battery_id",
+                        "groupBy": [
+                          {
+                            "params": [
+                              "$__interval"
+                            ],
+                            "type": "time"
+                          },
+                          {
+                            "params": [
+                              "battery_id::tag"
+                            ],
+                            "type": "tag"
+                          },
+                          {
+                            "params": [
+                              "previous"
+                            ],
+                            "type": "fill"
+                          }
+                        ],
+                        "measurement": "pylontech/battery",
+                        "orderByTime": "ASC",
+                        "policy": "default",
+                        "resultFormat": "time_series",
+                        "select": [
+                          [
+                            {
+                              "params": [
+                                "soc"
+                              ],
+                              "type": "field"
+                            },
+                            {
+                              "params": [],
+                              "type": "mean"
+                            }
+                          ]
+                        ],
+                        "tags": []
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 7,
+          "links": [],
+          "title": "SoC by Battery",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 25,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "normal"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "min": 0,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "blue",
+                        "value": 0
+                      },
+                      {
+                        "color": "super-light-green",
+                        "value": 20
+                      },
+                      {
+                        "color": "light-green",
+                        "value": 25
+                      },
+                      {
+                        "color": "green",
+                        "value": 30
+                      },
+                      {
+                        "color": "semi-dark-green",
+                        "value": 35
+                      },
+                      {
+                        "color": "dark-green",
+                        "value": 40
+                      },
+                      {
+                        "color": "super-light-yellow",
+                        "value": 45
+                      },
+                      {
+                        "color": "light-yellow",
+                        "value": 50
+                      },
+                      {
+                        "color": "yellow",
+                        "value": 55
+                      },
+                      {
+                        "color": "semi-dark-yellow",
+                        "value": 60
+                      },
+                      {
+                        "color": "dark-yellow",
+                        "value": 65
+                      },
+                      {
+                        "color": "super-light-orange",
+                        "value": 70
+                      },
+                      {
+                        "color": "light-orange",
+                        "value": 75
+                      },
+                      {
+                        "color": "orange",
+                        "value": 80
+                      },
+                      {
+                        "color": "semi-dark-orange",
+                        "value": 85
+                      },
+                      {
+                        "color": "dark-orange",
+                        "value": 90
+                      },
+                      {
+                        "color": "super-light-red",
+                        "value": 95
+                      },
+                      {
+                        "color": "light-red",
+                        "value": 100
+                      }
+                    ]
+                  },
+                  "unit": "percent"
+                },
+                "overrides": []
+              },
+              "options": {
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "13.2.2"
+          }
+        }
       }
     },
     "layout": {
@@ -1421,6 +1661,19 @@
               "width": 24,
               "x": 0,
               "y": 86
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-7"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 114
             }
           }
         ]
