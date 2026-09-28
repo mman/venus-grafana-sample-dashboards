@@ -1163,6 +1163,10 @@
                       {
                         "id": "unit",
                         "value": "volt"
+                      },
+                      {
+                        "id": "decimals",
+                        "value": 2
                       }
                     ]
                   },
@@ -1176,6 +1180,10 @@
                       {
                         "id": "unit",
                         "value": "celsius"
+                      },
+                      {
+                        "id": "decimals",
+                        "value": 2
                       }
                     ]
                   },
@@ -1189,6 +1197,19 @@
                       {
                         "id": "unit",
                         "value": "percent"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Curr",
+                      "scope": "series"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "amp"
                       }
                     ]
                   }
