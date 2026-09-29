@@ -1080,9 +1080,10 @@
                       "group": "influxdb",
                       "kind": "DataQuery",
                       "spec": {
-                        "query": "SELECT\n  \"voltage\" AS \"Volt\", \"current\" AS \"Curr\", \"temperature\" AS \"Tempr\",\n  \"temp_low\" AS \"Tlow\", \"temp_low_index\" AS \"Tlow.Id\",\n  \"temp_high\" AS \"Thigh\", \"temp_high_index\" AS \"Thigh.Id\",\n  \"volt_low\" AS \"Vlow\", \"volt_low_index\" AS \"Vlow.Id\",\n  \"volt_high\" AS \"Vhigh\", \"volt_high_index\" AS \"Vhigh.Id\",\n  \"base_state\" AS \"Base.St\", \"volt_state\" AS \"Volt.St\",\n  \"curr_state\" AS \"Curr.St\", \"temp_state\" AS \"Temp.St\",\n  \"soc\" AS \"Coulomb\",\n  \"bv_state\" AS \"B.V.St\", \"bt_state\" AS \"B.T.St\",\n  \"mos_temperature\" AS \"MosTempr\", \"mt_state\" AS \"M.T.St\"\nFROM \"pylontech/battery\"\nWHERE $timeFilter\nGROUP BY \"battery\", \"battery_id\"\nORDER BY time DESC LIMIT 1",
+                        "alias": "$tag_battery_id / $tag_cell_id",
+                        "query": "SELECT mean(\"voltage_delta\") * 1000\nFROM \"pylontech/cell\"\nWHERE $timeFilter\nGROUP BY time($__interval), \"battery_id\", \"cell_id\" fill(previous)",
                         "rawQuery": true,
-                        "resultFormat": "table"
+                        "resultFormat": "time_series"
                       },
                       "version": "v0"
                     },
@@ -1091,143 +1092,95 @@
                 }
               ],
               "queryOptions": {},
-              "transformations": [
-                {
-                  "group": "organize",
-                  "kind": "Transformation",
-                  "spec": {
-                    "options": {
-                      "excludeByName": {
-                        "Time": true,
-                        "battery": true
-                      },
-                      "includeByName": {},
-                      "indexByName": {},
-                      "renameByName": {}
-                    }
-                  }
-                },
-                {
-                  "group": "sortBy",
-                  "kind": "Transformation",
-                  "spec": {
-                    "options": {
-                      "fields": {},
-                      "sort": [
-                        {
-                          "field": "battery_id"
-                        }
-                      ]
-                    }
-                  }
-                }
-              ]
+              "transformations": []
             }
           },
-          "description": "",
+          "description": "Each cell's voltage minus the mean of its own battery (pylontech/cell voltage_delta, in mV). Green is within ±5 mV of the module. Blue shades are cells below their module, i.e. holding less charge: the ones that reach the low knee first and lag at the top of charge. Yellow to red shades are cells above their module: the ones that hit the high-voltage limit first. Judge at rest (current ≈ 0) after an hour of relaxation; under load or during absorption a ±30 mV spread is normal.",
           "id": 8,
           "links": [],
-          "title": "Pylontech `pwr`",
+          "title": "Pylontech Cell Voltage Delta to Battery",
           "vizConfig": {
-            "group": "table",
+            "group": "state-timeline",
             "kind": "VizConfig",
             "spec": {
               "fieldConfig": {
                 "defaults": {
                   "color": {
-                    "mode": "thresholds"
+                    "mode": "thresholds",
+                    "seriesBy": "last"
                   },
                   "custom": {
-                    "align": "auto",
-                    "cellOptions": {
-                      "type": "auto"
+                    "axisPlacement": "auto",
+                    "fillOpacity": 70,
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
                     },
-                    "footer": {
-                      "reducers": []
-                    },
-                    "inspect": false,
-                    "minWidth": 50
+                    "insertNulls": false,
+                    "lineWidth": 0,
+                    "spanNulls": false
                   },
+                  "decimals": 1,
                   "thresholds": {
                     "mode": "absolute",
                     "steps": [
                       {
+                        "color": "dark-blue"
+                      },
+                      {
+                        "color": "blue",
+                        "value": -30
+                      },
+                      {
+                        "color": "light-blue",
+                        "value": -20
+                      },
+                      {
+                        "color": "super-light-blue",
+                        "value": -10
+                      },
+                      {
                         "color": "green",
-                        "value": 0
+                        "value": -5
+                      },
+                      {
+                        "color": "super-light-yellow",
+                        "value": 5
+                      },
+                      {
+                        "color": "yellow",
+                        "value": 10
+                      },
+                      {
+                        "color": "orange",
+                        "value": 20
                       },
                       {
                         "color": "red",
-                        "value": 80
+                        "value": 30
                       }
                     ]
-                  }
+                  },
+                  "unit": "mvolt"
                 },
-                "overrides": [
-                  {
-                    "matcher": {
-                      "id": "byRegexp",
-                      "options": "^V\\w+$",
-                      "scope": "series"
-                    },
-                    "properties": [
-                      {
-                        "id": "unit",
-                        "value": "volt"
-                      },
-                      {
-                        "id": "decimals",
-                        "value": 2
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byRegexp",
-                      "options": "^(Mos)?T(?!ime)\\w+$",
-                      "scope": "series"
-                    },
-                    "properties": [
-                      {
-                        "id": "unit",
-                        "value": "celsius"
-                      },
-                      {
-                        "id": "decimals",
-                        "value": 2
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Coulomb",
-                      "scope": "series"
-                    },
-                    "properties": [
-                      {
-                        "id": "unit",
-                        "value": "percent"
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Curr",
-                      "scope": "series"
-                    },
-                    "properties": [
-                      {
-                        "id": "unit",
-                        "value": "amp"
-                      }
-                    ]
-                  }
-                ]
+                "overrides": []
               },
               "options": {
-                "cellHeight": "sm",
-                "showHeader": true
+                "alignValue": "left",
+                "legend": {
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "mergeValues": false,
+                "rowHeight": 0.9,
+                "showValue": "auto",
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
               }
             },
             "version": "13.2.2"
@@ -1310,6 +1263,19 @@
                         "width": 24,
                         "x": 0,
                         "y": 32
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-8"
+                        },
+                        "height": 11,
+                        "width": 24,
+                        "x": 0,
+                        "y": 61
                       }
                     }
                   ]
