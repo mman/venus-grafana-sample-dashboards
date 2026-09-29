@@ -494,7 +494,7 @@
                     "seriesBy": "last"
                   },
                   "custom": {
-                    "axisPlacement": "auto",
+                    "axisPlacement": "hidden",
                     "fillOpacity": 70,
                     "hideFrom": {
                       "legend": false,
@@ -1110,7 +1110,7 @@
                     "seriesBy": "last"
                   },
                   "custom": {
-                    "axisPlacement": "auto",
+                    "axisPlacement": "hidden",
                     "fillOpacity": 70,
                     "hideFrom": {
                       "legend": false,
