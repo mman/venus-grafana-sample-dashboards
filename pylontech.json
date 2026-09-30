@@ -585,10 +585,12 @@
                       "excludeByName": {
                         "B.T.St": true,
                         "B.V.St": true,
+                        "Base.St": true,
                         "Curr.St": true,
                         "M.T.St": true,
                         "Temp.St": true,
                         "Time": true,
+                        "Volt.St": true,
                         "battery_id": true
                       },
                       "includeByName": {},
