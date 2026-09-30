@@ -533,6 +533,186 @@
           }
         }
       },
+      "panel-19": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "datasource-influxdb"
+                      },
+                      "group": "influxdb",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "query": "SELECT \"voltage\" AS \"Volt\", \"current\" AS \"Curr\", \"temperature\" AS \"Tempr\",\n       \"temp_low\" AS \"Tlow\", \"temp_low_index\" AS \"Tlow.Id\",\n       \"temp_high\" AS \"Thigh\", \"temp_high_index\" AS \"Thigh.Id\",\n       \"volt_low\" AS \"Vlow\", \"volt_low_index\" AS \"Vlow.Id\",\n       \"volt_high\" AS \"Vhigh\", \"volt_high_index\" AS \"Vhigh.Id\",\n       \"base_state\" AS \"Base.St\", \"volt_state\" AS \"Volt.St\",\n       \"curr_state\" AS \"Curr.St\", \"temp_state\" AS \"Temp.St\",\n       \"soc\" AS \"Coulomb\", \"bv_state\" AS \"B.V.St\", \"bt_state\" AS \"B.T.St\",\n       \"mos_temperature\" AS \"MosTempr\", \"mt_state\" AS \"M.T.St\"\nFROM \"pylontech/battery\"\nWHERE $timeFilter\nGROUP BY \"battery\", \"battery_id\"\nORDER BY time DESC LIMIT 1",
+                        "rawQuery": true,
+                        "resultFormat": "table"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "group": "sortBy",
+                  "kind": "Transformation",
+                  "spec": {
+                    "options": {
+                      "fields": {},
+                      "sort": [
+                        {
+                          "field": "battery_id"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "group": "organize",
+                  "kind": "Transformation",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {
+                        "B.T.St": true,
+                        "B.V.St": true,
+                        "Curr.St": true,
+                        "M.T.St": true,
+                        "Temp.St": true,
+                        "Time": true,
+                        "battery_id": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {},
+                      "renameByName": {}
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 19,
+          "links": [],
+          "title": "New panel",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byRegexp",
+                      "options": "^(Volt|Vlow|Vhigh)$",
+                      "scope": "series"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "volt"
+                      },
+                      {
+                        "id": "decimals",
+                        "value": 3
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byRegexp",
+                      "options": "^(Tempr|Tlow|Thigh|MosTempr)$",
+                      "scope": "series"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "celsius"
+                      },
+                      {
+                        "id": "decimals",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Coulomb",
+                      "scope": "series"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "percent"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Curr",
+                      "scope": "series"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "amp"
+                      },
+                      {
+                        "id": "decimals",
+                        "value": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true
+              }
+            },
+            "version": "13.2.2"
+          }
+        }
+      },
       "panel-2": {
         "kind": "Panel",
         "spec": {
@@ -1405,6 +1585,19 @@
                         "width": 24,
                         "x": 0,
                         "y": 61
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-19"
+                        },
+                        "height": 8,
+                        "width": 12,
+                        "x": 0,
+                        "y": 89
                       }
                     }
                   ]
