@@ -471,20 +471,24 @@
                         "value": 0
                       },
                       {
-                        "color": "blue",
+                        "color": "semi-dark-blue",
                         "value": -10
                       },
                       {
-                        "color": "light-blue",
+                        "color": "blue",
                         "value": -5
                       },
                       {
-                        "color": "super-light-blue",
+                        "color": "light-blue",
                         "value": -2
                       },
                       {
-                        "color": "green",
+                        "color": "super-light-blue",
                         "value": -1
+                      },
+                      {
+                        "color": "light-green",
+                        "value": 0
                       },
                       {
                         "color": "super-light-orange",
