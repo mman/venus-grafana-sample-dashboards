@@ -603,7 +603,7 @@
           "description": "",
           "id": 19,
           "links": [],
-          "title": "New panel",
+          "title": "pwr",
           "vizConfig": {
             "group": "table",
             "kind": "VizConfig",
@@ -1566,12 +1566,25 @@
                       "spec": {
                         "element": {
                           "kind": "ElementReference",
+                          "name": "panel-19"
+                        },
+                        "height": 8,
+                        "width": 24,
+                        "x": 0,
+                        "y": 32
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
                           "name": "panel-2"
                         },
                         "height": 29,
                         "width": 24,
                         "x": 0,
-                        "y": 32
+                        "y": 40
                       }
                     },
                     {
@@ -1584,20 +1597,7 @@
                         "height": 28,
                         "width": 24,
                         "x": 0,
-                        "y": 61
-                      }
-                    },
-                    {
-                      "kind": "GridLayoutItem",
-                      "spec": {
-                        "element": {
-                          "kind": "ElementReference",
-                          "name": "panel-19"
-                        },
-                        "height": 8,
-                        "width": 12,
-                        "x": 0,
-                        "y": 89
+                        "y": 69
                       }
                     }
                   ]
